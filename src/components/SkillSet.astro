@@ -1,21 +1,21 @@
 ---
 import { Image } from "astro:assets";
 
-import cLogo from "@assets/images/tech-icons/c.80p.webp";
-import cppLogo from "@assets/images/tech-icons/cpp.80p.webp";
-import javascriptLogo from "@assets/images/tech-icons/javascript.80p.webp";
-import typescriptLogo from "@assets/images/tech-icons/typescript.80p.webp";
-import pythonLogo from "@assets/images/tech-icons/python.80p.webp";
-import phpLogo from "@assets/images/tech-icons/php.80p.webp";
-import laravelLogo from "@assets/images/tech-icons/laravel.80p.webp";
-import fastapiLogo from "@assets/images/tech-icons/fastapi.80p.webp";
-import vueLogo from "@assets/images/tech-icons/vue.80p.webp";
-import nuxtLogo from "@assets/images/tech-icons/nuxt.80p.webp";
-import astroLogo from "@assets/images/tech-icons/astro.80p.webp";
-import awsLogo from "@assets/images/tech-icons/aws.80p.webp";
-import terraformLogo from "@assets/images/tech-icons/terraform.80p.webp";
-import linuxLogo from "@assets/images/tech-icons/linux.80p.webp";
-import nginxLogo from "@assets/images/tech-icons/nginx.80p.webp";
+import cLogo from "@assets/images/tech-icons/c.x360.webp";
+import cppLogo from "@assets/images/tech-icons/cpp.x360.webp";
+import javascriptLogo from "@assets/images/tech-icons/javascript.x360.webp";
+import typescriptLogo from "@assets/images/tech-icons/typescript.x360.webp";
+import pythonLogo from "@assets/images/tech-icons/python.x360.webp";
+import phpLogo from "@assets/images/tech-icons/php.x360.webp";
+import laravelLogo from "@assets/images/tech-icons/laravel.x360.webp";
+import fastapiLogo from "@assets/images/tech-icons/fastapi.x360.webp";
+import vueLogo from "@assets/images/tech-icons/vue.x360.webp";
+import nuxtLogo from "@assets/images/tech-icons/nuxt.x360.webp";
+import astroLogo from "@assets/images/tech-icons/astro.x360.webp";
+import awsLogo from "@assets/images/tech-icons/aws.x360.webp";
+import terraformLogo from "@assets/images/tech-icons/terraform.x360.webp";
+import linuxLogo from "@assets/images/tech-icons/linux.x360.webp";
+import nginxLogo from "@assets/images/tech-icons/nginx.x360.webp";
 
 type LanguageName =
   | "C"
@@ -81,12 +81,13 @@ const infraSkills: (LanguageName | FrameworkName)[] = [
     <div class="flex space-x-2">
       {
         languageSkills.map(name => (
-          <div class="flex h-12 items-center justify-center">
+          <div class="flex h-12 items-center justify-start">
             <Image
               src={getIconMetadata(name)}
               alt={name}
               title={name}
-              class="h-12 w-full object-cover"
+              class="h-12 object-contain"
+              style={{ width: "auto", maxWidth: "100%", height: "100%" }}
             />
           </div>
         ))
@@ -98,12 +99,13 @@ const infraSkills: (LanguageName | FrameworkName)[] = [
     <div class="flex space-x-2">
       {
         backendSkills.map(name => (
-          <div class="flex h-12 items-center justify-center">
+          <div class="items-left flex h-12 justify-start">
             <Image
               src={getIconMetadata(name)}
               alt={name}
               title={name}
-              class="h-12 w-full object-cover"
+              class="h-12 object-contain"
+              style={{ width: "auto", maxWidth: "100%", height: "100%" }}
             />
           </div>
         ))
@@ -115,12 +117,13 @@ const infraSkills: (LanguageName | FrameworkName)[] = [
     <div class="flex space-x-2">
       {
         frontendSkills.map(name => (
-          <div class="flex h-12 items-center justify-center">
+          <div class="flex h-12 items-center justify-start">
             <Image
               src={getIconMetadata(name)}
               alt={name}
               title={name}
-              class="h-12 w-full object-cover"
+              class="h-12 object-contain"
+              style={{ width: "auto", maxWidth: "100%", height: "100%" }}
             />
           </div>
         ))
@@ -132,8 +135,14 @@ const infraSkills: (LanguageName | FrameworkName)[] = [
     <div class="flex space-x-2">
       {
         infraSkills.map(name => (
-          <div class="flex h-12 w-12 items-center justify-center">
-            <Image src={getIconMetadata(name)} alt={name} title={name} />
+          <div class="flex h-12 w-12 items-center justify-start">
+            <Image
+              src={getIconMetadata(name)}
+              alt={name}
+              title={name}
+              class="h-12 object-contain"
+              style={{ width: "auto", maxWidth: "100%", height: "100%" }}
+            />
           </div>
         ))
       }
