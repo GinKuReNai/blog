@@ -1,0 +1,63 @@
+---
+import { Image } from "astro:assets";
+
+import typescriptLogo from "@assets/images/tech-icons/typescript.png";
+import phpLogo from "@assets/images/tech-icons/php.png";
+
+type TechnologyName = "Typescript" | "PHP";
+type BackendTechnologyName = "Python";
+type FrontendTechnologyName = "Typescript";
+type InfraTechnologyName = "AWS";
+
+const iconMetadatas: { [key in TechnologyName]: ImageMetadata } = {
+  Typescript: typescriptLogo,
+  PHP: phpLogo,
+};
+
+function getIconMetadata(name: TechnologyName): ImageMetadata {
+  return iconMetadatas[name];
+}
+
+const backendSkills: TechnologyName[] = ["PHP"];
+const frontendSkills: TechnologyName[] = ["Typescript"];
+const infraSkills: TechnologyName[] = [];
+---
+
+<div class="skillSets">
+  <div>
+    <h2 class="mb-3 text-xl font-bold">Backend</h2>
+    <div class="flex space-x-2">
+      {
+        backendSkills.map(name => (
+          <div class="flex h-12 w-12 items-center justify-center bg-gray-200">
+            <Image src={getIconMetadata(name)} alt={name} title={name} />
+          </div>
+        ))
+      }
+    </div>
+  </div>
+  <div>
+    <h2 class="mb-3 text-xl font-bold">Frontend</h2>
+    <div class="flex space-x-2">
+      {
+        frontendSkills.map(name => (
+          <div class="flex h-12 w-12 items-center justify-center bg-gray-200">
+            <Image src={getIconMetadata(name)} alt={name} title={name} />
+          </div>
+        ))
+      }
+    </div>
+  </div>
+  <div>
+    <h2 class="mb-3 text-xl font-bold">Infra</h2>
+    <div class="flex space-x-2">
+      {
+        infraSkills.map(name => (
+          <div class="flex h-12 w-12 items-center justify-center bg-gray-200">
+            <Image src={getIconMetadata(name)} alt={name} title={name} />
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</div>
