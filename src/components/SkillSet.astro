@@ -1,36 +1,110 @@
 ---
 import { Image } from "astro:assets";
 
-import typescriptLogo from "@assets/images/tech-icons/typescript.png";
-import phpLogo from "@assets/images/tech-icons/php.png";
+import cLogo from "@assets/images/tech-icons/c.80p.webp";
+import cppLogo from "@assets/images/tech-icons/cpp.80p.webp";
+import javascriptLogo from "@assets/images/tech-icons/javascript.80p.webp";
+import typescriptLogo from "@assets/images/tech-icons/typescript.80p.webp";
+import pythonLogo from "@assets/images/tech-icons/python.80p.webp";
+import phpLogo from "@assets/images/tech-icons/php.80p.webp";
+import laravelLogo from "@assets/images/tech-icons/laravel.80p.webp";
+import fastapiLogo from "@assets/images/tech-icons/fastapi.80p.webp";
+import vueLogo from "@assets/images/tech-icons/vue.80p.webp";
+import nuxtLogo from "@assets/images/tech-icons/nuxt.80p.webp";
+import astroLogo from "@assets/images/tech-icons/astro.80p.webp";
+import awsLogo from "@assets/images/tech-icons/aws.80p.webp";
+import terraformLogo from "@assets/images/tech-icons/terraform.80p.webp";
+import linuxLogo from "@assets/images/tech-icons/linux.80p.webp";
+import nginxLogo from "@assets/images/tech-icons/nginx.80p.webp";
 
-type TechnologyName = "Typescript" | "PHP";
-type BackendTechnologyName = "Python";
-type FrontendTechnologyName = "Typescript";
-type InfraTechnologyName = "AWS";
+type LanguageName =
+  | "C"
+  | "CPP"
+  | "Javascript"
+  | "Typescript"
+  | "Python"
+  | "PHP"
+  | "Terraform";
+type FrameworkName =
+  | "Laravel"
+  | "FastAPI"
+  | "Vue"
+  | "Nuxt"
+  | "Astro"
+  | "Linux"
+  | "Nginx"
+  | "AWS";
 
-const iconMetadatas: { [key in TechnologyName]: ImageMetadata } = {
-  Typescript: typescriptLogo,
-  PHP: phpLogo,
-};
+const iconMetadatas: { [key in LanguageName | FrameworkName]: ImageMetadata } =
+  {
+    C: cLogo,
+    CPP: cppLogo,
+    Javascript: javascriptLogo,
+    Typescript: typescriptLogo,
+    Python: pythonLogo,
+    PHP: phpLogo,
+    Terraform: terraformLogo,
+    Laravel: laravelLogo,
+    FastAPI: fastapiLogo,
+    Vue: vueLogo,
+    Nuxt: nuxtLogo,
+    Astro: astroLogo,
+    Linux: linuxLogo,
+    Nginx: nginxLogo,
+    AWS: awsLogo,
+  };
 
-function getIconMetadata(name: TechnologyName): ImageMetadata {
+function getIconMetadata(name: LanguageName | FrameworkName): ImageMetadata {
   return iconMetadatas[name];
 }
 
-const backendSkills: TechnologyName[] = ["PHP"];
-const frontendSkills: TechnologyName[] = ["Typescript"];
-const infraSkills: TechnologyName[] = [];
+const languageSkills: LanguageName[] = [
+  "C",
+  "CPP",
+  "Javascript",
+  "Typescript",
+  "Python",
+  "PHP",
+];
+const backendSkills: FrameworkName[] = ["Laravel", "FastAPI", "Nginx"];
+const frontendSkills: FrameworkName[] = ["Vue", "Nuxt", "Astro"];
+const infraSkills: (LanguageName | FrameworkName)[] = [
+  "AWS",
+  "Terraform",
+  "Linux",
+];
 ---
 
 <div class="skillSets">
+  <div>
+    <h2 class="mb-3 text-xl font-bold">Language</h2>
+    <div class="flex space-x-2">
+      {
+        languageSkills.map(name => (
+          <div class="flex h-12 items-center justify-center">
+            <Image
+              src={getIconMetadata(name)}
+              alt={name}
+              title={name}
+              class="h-12 w-full object-cover"
+            />
+          </div>
+        ))
+      }
+    </div>
+  </div>
   <div>
     <h2 class="mb-3 text-xl font-bold">Backend</h2>
     <div class="flex space-x-2">
       {
         backendSkills.map(name => (
-          <div class="flex h-12 w-12 items-center justify-center bg-gray-200">
-            <Image src={getIconMetadata(name)} alt={name} title={name} />
+          <div class="flex h-12 items-center justify-center">
+            <Image
+              src={getIconMetadata(name)}
+              alt={name}
+              title={name}
+              class="h-12 w-full object-cover"
+            />
           </div>
         ))
       }
@@ -41,8 +115,13 @@ const infraSkills: TechnologyName[] = [];
     <div class="flex space-x-2">
       {
         frontendSkills.map(name => (
-          <div class="flex h-12 w-12 items-center justify-center bg-gray-200">
-            <Image src={getIconMetadata(name)} alt={name} title={name} />
+          <div class="flex h-12 items-center justify-center">
+            <Image
+              src={getIconMetadata(name)}
+              alt={name}
+              title={name}
+              class="h-12 w-full object-cover"
+            />
           </div>
         ))
       }
@@ -53,7 +132,7 @@ const infraSkills: TechnologyName[] = [];
     <div class="flex space-x-2">
       {
         infraSkills.map(name => (
-          <div class="flex h-12 w-12 items-center justify-center bg-gray-200">
+          <div class="flex h-12 w-12 items-center justify-center">
             <Image src={getIconMetadata(name)} alt={name} title={name} />
           </div>
         ))
