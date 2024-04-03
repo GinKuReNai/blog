@@ -1,6 +1,64 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:recommended"
-  ]
+      "config:base"
+  ],
+  // mainブランチにPRを作成する
+  "baseBranches": [
+    "main"
+  ],
+  "timezone": "Asia/Tokyo",
+  "packageRules": [
+      // Astroのアップデートは手動で行う
+      {
+          "groupName": "astro",
+          "matchPackageNames": [
+              "astro"
+          ],
+          "minimumReleaseAge": "7 days",
+      },
+      // マイナーアップデートはまとめてオートマージする
+      {
+          "groupName": "all minor dependencies",
+          "matchUpdateTypes": [
+              "minor"
+          ],
+          "excludePackageNames": [
+              "astro"
+          ],
+          "labels": [
+              "minor"
+          ],
+          "automerge": true,
+          "automergeType": "branch"
+      }
+  ],
+  // minor, patchのアップデートは別々にPRを作成する
+  "separateMinorPatch": true,
+  // 小規模なアップデートはオートマージする
+  "pin": {
+    "automerge": true,
+    "automergeType": "branch",
+    "labels": [
+      "pin"
+    ]
+  },
+  "patch": {
+    "automerge": true,
+    "automergeType": "branch",
+    "labels": [
+      "patch"
+    ]
+  },
+  // メジャーアップデートはオートマージしない
+  "major": {
+    "automerge": false,
+    "labels": [
+      "major"
+    ]
+  },
+  // バージョンアップの依存関係をダッシュボードで表示する
+  "dependencyDashboard": true,
+  // 最大で10個のPRを同時に作成する
+  "prConcurrentLimit": 10
 }
